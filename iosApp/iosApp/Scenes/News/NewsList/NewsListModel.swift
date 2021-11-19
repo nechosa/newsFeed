@@ -11,6 +11,7 @@ import Foundation
 
 class NewsListModel : ObservableObject {
     @Published var newsItems: [NewsItem] = [NewsItem]()
+    unowned var coordinator: NewsListCoordinator!
 
     lazy var store: NewsListStore = {
        let store = NewsListStore()
@@ -30,8 +31,13 @@ class NewsListModel : ObservableObject {
         return colletor
     }()
 
+
     func loadNews() {
         self.store.refresh()
+    }
+
+    func open(_ newsItem: NewsItem) {
+       self.coordinator.open(newsItem)
     }
 }
 
