@@ -3,10 +3,10 @@ package com.example.test.services
 import com.example.test.data.NewsList
 import com.example.test.network.NetworkClient
 
-class NewsService(val networkClient: NetworkClient) {
+class NewsService(private val client: NetworkClient) {
 
     suspend fun getList(): NewsList {
-        return networkClient.getData<NewsList>(NEWS_URL)
+        return client.getData<NewsList>(NEWS_URL)
     }
 
 

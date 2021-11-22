@@ -11,6 +11,7 @@ data class NewsStoreState(
 sealed class NewsAction : Action {
     data class Refresh(val needRefresh : Boolean):NewsAction()
     data class Data(val news: List<NewsItem>):NewsAction()
+    data class Error(val error: Exception) : NewsAction()
 }
 
 interface NewsActionType {

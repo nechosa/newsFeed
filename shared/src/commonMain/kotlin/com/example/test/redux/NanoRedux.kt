@@ -1,5 +1,6 @@
 package com.example.test.redux
 
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
 interface StoreState
@@ -8,7 +9,7 @@ interface Effect
 
 interface Store<S: StoreState, A: Action, E: Effect> {
     fun observeState(): StateFlow<S>
-    fun observeSideEffect(): StateFlow<E>
+    fun observeSideEffect(): Flow<E>
     fun observeAction():StateFlow<A>
 
     fun dispatch(action: NewsAction)
